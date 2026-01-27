@@ -2,7 +2,7 @@
   <div class="content-section">
     <div class="section-header">
       <h2>{{ title }}</h2>
-      <a href="#" class="more-link">更多 &gt;</a>
+      <a href="#" class="more-link" @click.prevent="handleMoreClick">更多 &gt;</a>
     </div>
     <ul class="content-list">
       <li v-for="(item, index) in items" :key="index" @click="handleItemClick(item)">
@@ -30,6 +30,9 @@ export default {
   methods: {
     handleItemClick(item) {
       this.$emit('item-click', item)
+    },
+    handleMoreClick() {
+      this.$emit('more-click')
     }
   }
 }
@@ -41,7 +44,7 @@ export default {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  height: 280px;
+  height: 288px;
   display: flex;
   flex-direction: column;
   overflow-y: hidden;

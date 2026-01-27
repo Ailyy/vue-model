@@ -19,7 +19,7 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      menuItems: ['内网门户'],
+      menuItems: ['首页'],
       activeIndex: 0
     }
   },
@@ -27,6 +27,9 @@ export default {
     handleMenuClick(index) {
       this.activeIndex = index
       this.$emit('menu-change', this.menuItems[index])
+      if (index === 0 && this.$route.path !== '/header') {
+        this.$router.push('/header')
+      }
     }
   }
 }
